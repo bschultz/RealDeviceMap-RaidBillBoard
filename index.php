@@ -1,4 +1,6 @@
 <?php
+
+include './vendor/autoload.php';
 include './config.php';
 include './pokedex.php';
 include './movesets.php';
@@ -141,7 +143,7 @@ ORDER BY
       $charge_move = $charge_moves[$row['raid_pokemon_move_2']];
       $moveset = (($fast_move == $unknown_value && $charge_move == $unknown_value) ? $unknown_value : $fast_move . "/" . $charge_move);
       echo "<tr>";
-        echo "<td scope='row'><a title='Remove' data-toggle='tooltip'>X&nbsp;</a>" . $row['starts'] . "</td>";
+        echo "<td scope='row'><a title='Remove' data-toggle='tooltip' class='delete'>X&nbsp;</a>" . $row['starts'] . "</td>";
         echo "<td>" . $row['ends'] . "</td>";
         echo "<td>" . $row['raid_level'] . "</td>";
         echo "<td>" . $pokemon . "</td>";
@@ -180,7 +182,7 @@ if ($google_analytics_id != "") {
 <!-- End Google Analytics -->'";
 }
 
-if (google_adsense_id != "") {
+if ($google_adsense_id != "") {
   echo "
 <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
 <script>
